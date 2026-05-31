@@ -1,0 +1,28 @@
+# --- 必须使用 (作业 4.1) ---
+# Python 3.10+
+opencv-python-headless>=4.8
+numpy>=1.24
+onnxruntime>=1.16
+onnx>=1.12,<2.0
+fastapi>=0.110
+uvicorn[standard]>=0.27
+
+# 至少一种 MCAP 读取方式 (推荐 rosbags)
+rosbags>=0.9.20
+
+# 注意: 运行时推理仅依赖 onnxruntime (CPUExecutionProvider)。
+# ultralytics 只用于把 .pt 离线导出成 .onnx (scripts/download_yolo_model.py),
+# 它会拖入 torch + 捆绑 CUDA 的 wheel, 不应进入 CPU 推理镜像。
+# 需要重新导出模型时再单独安装: pip install ultralytics
+
+# --- 推荐使用 (作业 4.2) ---
+pydantic>=2.5
+pandas>=2.0
+matplotlib>=3.7
+# plotly>=5.18
+jinja2>=3.1
+pillow>=10.0
+
+# --- 开发 / 测试 ---
+pytest>=7.4
+python-multipart>=0.0.9   # FastAPI 文件上传

@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+.git/
+.gitignore
+.venv/
+venv/
+.pytest_cache/
+outputs/*
+!outputs/.gitkeep
+*.mcap
+!test_data/sample.mcap
+# .pt 是导出 ONNX 用的源权重, 推理只用 .onnx, 不进镜像
+*.pt
+.idea/
+.vscode/

@@ -1,0 +1,50 @@
+# Docker Compose 为强制要求 (作业第 9 节).
+# 服务启动:
+#   docker compose up --build
+#   open http://127.0.0.1:8000/docs
+#
+# 端到端冒烟测试:
+#   docker compose --profile test up --build --abort-on-container-exit
+services:
+  mcap_yolo_gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mcap_yolo_gateway
+    ports:
+      - "8000:8000"
+    environment:
+      MPLCONFIGDIR: /tmp/matplotlib
+    volumes:
+      # 输入测试数据、模型、输出报告均挂载到宿主机,便于验收查看。
+      - ./test_data:/workspace/test_data
+      - ./models:/workspace/models
+      - ./outputs:/workspace/outputs
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2).read()"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    command: >
+      bash -lc "
+      uvicorn app.main:app --host 0.0.0.0 --port 8000
+      "
+
+  # 冒烟测试服务: docker compose --profile test up --build
+  mcap_smoke_test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mcap_smoke_test
+    profiles:
+      - test
+    environment:
+      MPLCONFIGDIR: /tmp/matplotlib
+    volumes:
+      - ./test_data:/workspace/test_data
+      - ./models:/workspace/models
+      - ./outputs:/workspace/outputs
+    command: >
+      bash -lc "
+      scripts/run_smoke_test.sh
+      "

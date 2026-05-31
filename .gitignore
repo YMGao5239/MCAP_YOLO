@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.idea/
+.vscode/
+
+# 大文件不入库
+*.mcap
+*.onnx
+*.pt
+outputs/*
+!outputs/.gitkeep
