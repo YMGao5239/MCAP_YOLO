@@ -1,4 +1,4 @@
-"""FR-API-006 查询任务状态: GET /jobs/{job_id}.
+"""查询任务状态接口: GET /jobs/{job_id}.
 
 返回: {job_id, status, progress, result_path, report_path}
 """

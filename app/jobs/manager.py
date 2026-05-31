@@ -1,4 +1,4 @@
-"""异步任务管理 (FR-API-004/005/006).
+"""异步任务管理.
 
 内存级任务表: job_id -> {status(running/finished/failed), progress,
 result_path, report_path}。供 quality_scan / yolo_infer 异步执行与状态查询。

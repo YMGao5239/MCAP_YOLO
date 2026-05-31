@@ -1,4 +1,4 @@
-"""YOLO 前处理 (FR-YOLO,自写,禁止隐藏在高层 API).
+"""YOLO 前处理.
 
 letterbox resize → BGR2RGB → /255 归一化 → HWC2CHW → 增加 batch 维。
 记录缩放比例与 padding,供后处理坐标还原使用。

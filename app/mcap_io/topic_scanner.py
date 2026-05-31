@@ -1,4 +1,4 @@
-"""Topic 扫描与图像 Topic 识别 (FR-MCAP-001 / 作业 7.2).
+"""Topic 扫描与图像 Topic 识别.
 
  - 手动指定: --topics /camera/front/image...
  - 自动发现: --auto-detect-topics true

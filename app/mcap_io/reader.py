@@ -1,6 +1,6 @@
-"""MCAP 读取 (FR-MCAP-001/002/003/004).
+"""MCAP 读取.
 
-推荐方案 A: rosbags (轻量、离线友好,不强依赖完整 ROS2)。
+使用 rosbags 读取 MCAP,不强依赖完整 ROS2 环境。
 功能:
  - 读取单个 MCAP / 目录批处理 (递归扫描 .mcap)
  - 解析元信息: duration_sec, topics, message_count, start/end_time

@@ -1,4 +1,4 @@
-"""FR-API-005 MCAP YOLO 推理任务: POST /mcap/yolo_infer.
+"""MCAP YOLO 推理接口: POST /mcap/yolo_infer.
 
 请求字段: mcap_path, topics, model_path, labels_path, target_classes,
           sample_every_n, quality_threshold, nms_threshold, infer_low_quality

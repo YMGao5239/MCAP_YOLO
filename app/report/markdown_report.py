@@ -1,4 +1,4 @@
-"""Markdown 报告 (FR-REPORT-002): quality_report.md."""
+"""Markdown 报告: quality_report.md."""
 from __future__ import annotations
 
 from pathlib import Path

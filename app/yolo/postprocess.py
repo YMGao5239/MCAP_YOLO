@@ -1,8 +1,8 @@
-"""YOLO 后处理 (FR-YOLO,自写).
+"""YOLO 后处理.
 
  - 解析模型原始输出 → 候选框 (xywh/xyxy + obj/cls 置信度)
  - 置信度过滤 (conf-threshold)
- - 坐标映射回原图 (反 letterbox,禁止事项 11: bbox 必须映射回原图)
+ - 坐标映射回原图 (反 letterbox)
  - 关键目标类别过滤 (--target-classes person,car,truck,bus)
  - 输出 bbox, class_id, label, confidence
 """

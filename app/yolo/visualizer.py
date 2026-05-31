@@ -1,7 +1,7 @@
-"""检测结果可视化 (加分项 / 检测样本导出).
+"""检测结果可视化.
 
 在原图上绘制 bbox + label + confidence,用于 detection_samples/ 和
-单帧 YOLO 预览接口 (FR-API-008)。
+单帧 YOLO 预览接口。
 """
 from __future__ import annotations
 

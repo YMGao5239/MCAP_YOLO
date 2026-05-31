@@ -1,9 +1,9 @@
 """MCAP 相关接口.
 
-FR-API-003  POST /mcap/inspect        MCAP 信息解析 (上传或容器内路径)
-FR-API-004  POST /mcap/quality_scan   MCAP 质量扫描任务
-FR-API-007  GET  /mcap/frame          单帧预览 (base64, 加分)
-FR-API-008  GET  /mcap/frame_yolo     单帧 YOLO 预览 (加分)
+POST /mcap/inspect        MCAP 信息解析
+POST /mcap/quality_scan   MCAP 质量扫描任务
+GET  /mcap/frame          单帧预览 (base64)
+GET  /mcap/frame_yolo     单帧 YOLO 预览
 """
 from __future__ import annotations
 

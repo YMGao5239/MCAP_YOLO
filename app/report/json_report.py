@@ -1,4 +1,4 @@
-"""JSON 报告 (FR-REPORT-001/002/003 + metrics.json).
+"""JSON 报告.
 
  - mcap_summary.json   : files[], duration, topics, message_count...
  - quality_report.json : 按 Topic 质量汇总、评分、问题计数、Top-N 坏帧

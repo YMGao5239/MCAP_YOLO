@@ -99,5 +99,5 @@ ort.InferenceSession("models/yolov8n.onnx", providers=["CPUExecutionProvider"])
 
 ## 质量门控
 
-P7 管线串联时默认只对质量评分达到阈值的帧执行 YOLO。低质量帧会统计为
+管线串联时默认只对质量评分达到阈值的帧执行 YOLO。低质量帧会统计为
 `skipped_low_quality_frames`,避免在全黑、模糊或低分辨率帧上浪费推理时间。

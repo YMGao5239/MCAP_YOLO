@@ -1,4 +1,4 @@
-"""CLI: MCAP 质量扫描 (FR-CLI-001).
+"""CLI: MCAP 质量扫描.
 
 用法:
   python scripts/run_mcap_quality_scan.py \

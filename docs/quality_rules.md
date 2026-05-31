@@ -67,4 +67,4 @@ corrupted, too_dark, too_bright, blurry, low_contrast, low_resolution
 bad_quality
 ```
 
-默认 `quality_threshold = 0.6`。报告必须同时输出 `score`、`quality_tags` 和各项 `penalties`,保证每个低质量判定都能追溯到具体原因。
+默认 `quality_threshold = 0.6`。报告会同时输出 `score`、`quality_tags` 和各项 `penalties`,保证每个低质量判定都能追溯到具体原因。

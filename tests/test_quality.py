@@ -1,4 +1,4 @@
-"""质量评估单测 (NFR-004: 测试脚本可运行)."""
+"""质量评估单测。"""
 import cv2
 import numpy as np
 

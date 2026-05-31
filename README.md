@@ -4,12 +4,8 @@
 对合格帧运行 **YOLO ONNX** 目标检测与类别识别,并生成 JSON/HTML/Markdown 报告。
 通过 **FastAPI + Docker Compose** 一键交付。
 
-> 作业版本 v1.0 · 离线工程作业 · 建议工时 12~18h
-
----
-
 ## 1. 项目简介
-评分重点不是检测精度,而是 **「MCAP 图像帧 → 检测结果」完整工程链路** 的正确性与工程化质量。
+本项目关注 **「MCAP 图像帧 → 检测结果」完整工程链路** 的正确性与工程化质量。
 
 数据流:
 ```
@@ -182,9 +178,9 @@ python scripts/generate_test_mcap.py --output test_data/sample.mcap --frames 30 
 ```
 
 ## 9. 下载与运行 YOLO ONNX 模型
-> ⚠️ 这是一次性的**离线/宿主机**步骤,**不在 Docker 镜像内执行**。
+> ⚠️ 这是一次性的**宿主机**步骤,**不在 Docker 镜像内执行**。
 > 导出依赖 `ultralytics`(会拖入 torch + 捆绑 CUDA 的 wheel),因此它**不在** `requirements.txt`/镜像里。
-> 仓库已附带导出好的 `models/yolov8n.onnx`,验收时无需重新导出;
+> 仓库已附带导出好的 `models/yolov8n.onnx`,通常无需重新导出;
 > 容器内推理只用 `onnxruntime` CPUExecutionProvider。
 
 仅当需要重新生成 ONNX 时,在宿主机单独安装并运行(用 Ultralytics 下载 `yolov8n.pt`,导出 ONNX,并用 ONNX Runtime CPU provider 验证输入/输出张量):
@@ -206,7 +202,7 @@ models/yolov8n.onnx
 python scripts/download_yolo_model.py --model yolov8n.pt --output models/yolov8n.onnx --opset 12 --imgsz 640
 ```
 
-后续推理必须通过 `onnxruntime.InferenceSession(..., providers=["CPUExecutionProvider"])` 加载该 ONNX 模型。
+后续推理通过 `onnxruntime.InferenceSession(..., providers=["CPUExecutionProvider"])` 加载该 ONNX 模型。
 
 ## 10. 目录批处理 / 数据质量评估
 目录批处理入口用于 MCAP 元信息解析与图像 Topic 发现:
@@ -533,7 +529,7 @@ CPU 模式下主要瓶颈通常是 YOLO ONNX 推理,其次是图像解码和 let
 - 增大 `--sample-every-n`,减少推理帧数
 - 保持 `--infer-low-quality false`,让质量门控跳过坏帧
 - 使用更小输入尺寸或 OpenVINO 等 CPU 优化后端
-- 在 P9/P11 后续阶段增加批处理或多进程 worker
+- 增加批处理或多进程 worker
 
 ## 21. 异常处理说明
 当前异常处理策略:
@@ -556,7 +552,7 @@ CPU 模式下主要瓶颈通常是 YOLO ONNX 推理,其次是图像解码和 let
 - 统一异常类型还未完全抽象,部分错误仍直接由底层库异常转换为 HTTP 400。
 - MCAP 读取基于 `rosbags`,当前面向 ROS2 CDR 图像消息。
 - 质量规则是启发式规则,适合工程门控和问题解释,不是无参考图像质量模型。
-- ONNX 模型默认使用 YOLOv8n COCO 类别,检测精度不作为本作业核心评分目标。
+- ONNX 模型默认使用 YOLOv8n COCO 类别,检测精度取决于模型和数据场景。
 
 ## 23. 复现说明 / AI 使用说明
 推荐复现流程:
@@ -582,7 +578,7 @@ python scripts/run_mcap_yolo_inference.py \
   --output-dir ./outputs
 ```
 
-验收输出:
+输出文件:
 
 ```text
 outputs/mcap_summary.json
@@ -618,11 +614,11 @@ AI 工具使用范围:
 3. 宿主机直接运行 `pytest` 需要先安装 `requirements.txt`;Docker 环境中已验证通过。
 
 未完成项:
-暂无影响验收的未完成项。
+暂无影响当前运行的未完成项。
 
 ---
 
-## 推荐启动目标(验收)
+## 快速启动
 ```bash
 docker compose up --build           # 一键启动
 # 访问 http://127.0.0.1:8000/docs

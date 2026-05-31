@@ -1,6 +1,6 @@
-"""结构化日志 (NFR-003 可观测性).
+"""结构化日志.
 
-日志至少包含 16 个字段:
+日志字段:
   mcap_file, topic, message_type, frame_seq, decode_ms, preprocess_ms,
   inference_ms, postprocess_ms, quality_score, quality_tags, object_count,
   target_object_count, processed_frames, decode_failed_frames,

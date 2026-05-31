@@ -1,6 +1,6 @@
 """图像解码单测: CompressedImage(jpeg/png) 与 raw Image(encoding)。
 
-覆盖 FR-IMG-001/002/003 与 NFR-001:
+覆盖:
  - jpeg / png 压缩图解码
  - bgr8 / rgb8 / mono8 / 带行 padding(step) 的原图解码
  - 未知 encoding、损坏数据只计数不崩溃

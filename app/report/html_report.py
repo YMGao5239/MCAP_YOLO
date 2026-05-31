@@ -1,4 +1,4 @@
-"""HTML 报告 (FR-REPORT-002,jinja2 模板渲染).
+"""HTML 报告.
 
 quality_report.html:含质量汇总图表、坏样本缩略图、检测样本。
 """

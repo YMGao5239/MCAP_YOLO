@@ -1,4 +1,4 @@
-"""样本导出 (FR-REPORT-004 坏样本 / FR-REPORT-005 检测样本).
+"""样本导出.
 
  - bad_samples/      : 低质量帧图像 + 对应 index json (quality_score, tags)
  - detection_samples/: 带检测框可视化图像 + index json (detections)

@@ -1,4 +1,4 @@
-"""FR-API-002 健康检查: GET /health.
+"""健康检查接口: GET /health.
 
 返回: {status, model_loaded, mcap_reader_available, yolo_backend}
 """

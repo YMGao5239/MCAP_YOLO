@@ -1,4 +1,4 @@
-"""按 Topic 汇总 + 视频时序质量分析 (FR-QUALITY-003 / FR-SEQ-001).
+"""按 Topic 汇总 + 视频时序质量分析.
 
 Topic 汇总: total_frames, processed_frames, decode_failed_frames,
   bad_quality_frames, avg_quality_score, p50/p95_quality_score,

@@ -1,4 +1,3 @@
-# Docker Compose 为强制要求 (作业第 9 节).
 # 服务启动:
 #   docker compose up --build
 #   open http://127.0.0.1:8000/docs
@@ -16,7 +15,7 @@ services:
     environment:
       MPLCONFIGDIR: /tmp/matplotlib
     volumes:
-      # 输入测试数据、模型、输出报告均挂载到宿主机,便于验收查看。
+      # 输入测试数据、模型、输出报告均挂载到宿主机,便于本地查看。
       - ./test_data:/workspace/test_data
       - ./models:/workspace/models
       - ./outputs:/workspace/outputs

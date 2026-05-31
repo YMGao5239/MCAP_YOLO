@@ -1,4 +1,4 @@
-"""CLI: MCAP + YOLO 推理 (FR-CLI-002,推荐启动目标).
+"""CLI: MCAP + YOLO 推理.
 
 用法:
   python scripts/run_mcap_yolo_inference.py \

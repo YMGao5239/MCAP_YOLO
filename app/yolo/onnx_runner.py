@@ -1,7 +1,6 @@
-"""YOLO ONNX Runtime 推理 (FR-YOLO 系列).
+"""YOLO ONNX Runtime 推理.
 
-强制: 使用 ONNX Runtime 推理 (禁止只用 Ultralytics 高层 API / 只调命令行)。
- - 加载 YOLO ONNX 模型 (yolov8n 推荐;v5s/v8s/v11n 等亦可)
+ - 加载 YOLO ONNX 模型
  - 支持 CPU 推理 (CPUExecutionProvider)
  - 输入来自 MCAP 解析出的图像帧
  - 输出 bbox, class_id, label, confidence

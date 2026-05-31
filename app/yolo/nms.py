@@ -1,4 +1,4 @@
-"""非极大值抑制 NMS (FR-YOLO,自写实现)."""
+"""非极大值抑制 NMS."""
 from __future__ import annotations
 
 import numpy as np

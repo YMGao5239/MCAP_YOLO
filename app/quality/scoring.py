@@ -1,11 +1,10 @@
-"""质量评分 (FR-QUALITY-002).
+"""质量评分.
 
 quality_score = 1.0
   - blur_penalty - exposure_penalty - contrast_penalty
   - resolution_penalty - corruption_penalty - timestamp_penalty
 范围 [0,1];阈值可配置 (--quality-threshold 0.6);
 低于阈值标记 quality_tags=["bad_quality"];输出每个扣分项 penalties。
-README 中必须说明评分规则 (禁止事项 8: 评分规则不可解释)。
 """
 from __future__ import annotations
 

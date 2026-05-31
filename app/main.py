@@ -1,4 +1,4 @@
-"""FastAPI 应用入口 (FR-API-001 服务启动).
+"""FastAPI 应用入口.
 
 启动:  uvicorn app.main:app --host 0.0.0.0 --port 8000
 访问:  http://127.0.0.1:8000/docs

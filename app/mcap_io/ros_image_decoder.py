@@ -1,18 +1,18 @@
-"""ROS 图像消息解码 (FR-IMG-001/002/003).
+"""ROS 图像消息解码.
 
-CompressedImage (FR-IMG-001):
+CompressedImage:
  - 字段 header / format / data;支持 jpeg / png;cv2.imdecode → BGR ndarray
  - 解码失败计数,不崩溃
 
-Image 原始图像 (FR-IMG-002):
+Image 原始图像:
  - encoding: rgb8/bgr8/mono8/...;按 encoding 转 OpenCV BGR
  - 不支持的 encoding 记录并跳过
 
-保留时间戳 (FR-IMG-003):
+保留时间戳:
  - 返回 DecodedFrame(log_time, publish_time, frame_seq, width, height,
    encoding, decode_ms, image(ndarray))
 
-设计要点 (NFR-001 稳定性):
+设计要点:
  - 单帧解码失败/未知 encoding/损坏数据只计数并跳过,**绝不抛异常打断整条管线**。
  - reader 产出的是原始 CDR 字节,本模块负责反序列化 + 像素解码,
    保持 reader 与解码职责分离。
@@ -88,7 +88,7 @@ class DecodedFrame:
 
 @dataclass
 class DecodeStats:
-    """整段解码过程的统计 (FR-IMG-003 / NFR-001)。"""
+    """整段解码过程的统计。"""
 
     total_frames: int = 0
     decoded_frames: int = 0
@@ -156,7 +156,7 @@ class RosImageDecoder:
             )
             self._record_failure(message, frame_seq, f"unsupported encoding {exc.encoding!r}")
             return None
-        except Exception as exc:  # noqa: BLE001 - 任一坏帧都不能打断管线 (NFR-001)。
+        except Exception as exc:  # noqa: BLE001 - 任一坏帧都不能打断管线。
             self.stats.decode_failed_frames += 1
             self._record_failure(message, frame_seq, f"{type(exc).__name__}: {exc}")
             return None
@@ -177,7 +177,7 @@ class RosImageDecoder:
             image=image,
         )
 
-    # ---- CompressedImage (FR-IMG-001) --------------------------------------
+    # ---- CompressedImage ---------------------------------------------------
     def _decode_compressed(self, ros_msg) -> tuple[np.ndarray, str]:
         fmt = (getattr(ros_msg, "format", "") or "").strip()
         buffer = np.asarray(ros_msg.data, dtype=np.uint8)
@@ -189,7 +189,7 @@ class RosImageDecoder:
         encoding = fmt.split(";", 1)[0].strip() or "compressed"
         return image, encoding
 
-    # ---- 原始 Image (FR-IMG-002) -------------------------------------------
+    # ---- 原始 Image --------------------------------------------------------
     def _decode_raw(self, ros_msg) -> tuple[np.ndarray, str]:
         encoding = (getattr(ros_msg, "encoding", "") or "").strip()
         key = encoding.lower()

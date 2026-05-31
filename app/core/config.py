@@ -1,6 +1,21 @@
-"""集中配置 (NFR-004 可维护性: 配置项集中管理).
+"""集中配置.
 
 阈值、默认路径、Topic 等通过此处或环境变量管理,避免硬编码。
 """
-# TODO: pydantic Settings (quality_threshold, conf_threshold, nms_threshold,
-#       sample_every_n, max_frames, output_dir, model_path, labels_path ...)
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class AppDefaults:
+    quality_threshold: float = 0.6
+    conf_threshold: float = 0.25
+    nms_threshold: float = 0.45
+    sample_every_n: int = 1
+    output_dir: str = "outputs"
+    model_path: str = "models/yolov8n.onnx"
+    labels_path: str = "models/coco_classes.txt"
+
+
+DEFAULTS = AppDefaults()

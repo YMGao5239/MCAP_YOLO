@@ -1,4 +1,4 @@
-"""单帧图像质量检测 (FR-QUALITY-001).
+"""单帧图像质量检测.
 
 每帧至少计算: brightness_mean, brightness_std, blur_score(拉普拉斯方差),
 contrast_score, saturation_mean, width, height。
