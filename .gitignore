@@ -8,6 +8,7 @@ venv/
 
 # 大文件不入库
 *.mcap
+!test_data/sample.mcap
 *.onnx
 *.pt
 outputs/*
